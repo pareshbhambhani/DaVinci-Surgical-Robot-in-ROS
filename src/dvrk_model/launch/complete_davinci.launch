@@ -1,0 +1,86 @@
+<!-- two mtm + four psm  -->
+
+<launch>
+  <group ns="/dvrk_mtm1">
+    <arg name="model" default="$(find dvrk_model)/model/mtm_right.urdf.xacro" />
+    <arg name="gui" default="true" />
+    <arg name="rate" default="1"/>
+    
+    <param name="robot_description" command="rosrun xacro xacro.py $(arg model)"/>
+    <param name="use_gui" value="$(arg gui)"/>
+    <param name="rate" value="$(arg rate)"/>
+
+    <node name="joint_state_publisher1" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="robot_state_publisher1" pkg="robot_state_publisher" type="state_publisher" />
+  </group>
+
+  <group ns="/dvrk_mtm2">
+    <arg name="model" default="$(find dvrk_model)/model/mtm_left.urdf.xacro" />
+    <arg name="gui" default="true" />
+    <arg name="rate" default="1"/>
+    
+    <param name="robot_description" command="rosrun xacro xacro.py $(arg model)"/>
+    <param name="use_gui" value="$(arg gui)"/>
+    <param name="rate" value="$(arg rate)"/>
+    
+    <node name="joint_state_publisher2" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="robot_state_publisher2" pkg="robot_state_publisher" type="state_publisher" />
+  </group>
+
+  <group ns="/dvrk_psm1">
+    <arg name="model" default="$(find dvrk_model)/model/psm_one.urdf.xacro" />
+    <arg name="gui" default="true" />
+    <arg name="rate" default="1"/>
+
+    <param name="robot_description" command="rosrun xacro xacro.py $(arg model)"/>
+    <param name="use_gui" value="$(arg gui)"/>
+    <param name="rate" value="$(arg rate)"/>
+
+    <node name="joint_state_publisher3" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="robot_state_publisher3" pkg="robot_state_publisher" type="state_publisher" />
+  </group>
+  
+  <group ns="/dvrk_psm2">
+    <arg name="model" default="$(find dvrk_model)/model/psm_two.urdf.xacro" />
+    <arg name="gui" default="true" />
+    <arg name="rate" default="1"/>
+
+    <param name="robot_description" command="rosrun xacro xacro.py $(arg model)"/>
+    <param name="use_gui" value="$(arg gui)"/>
+    <param name="rate" value="$(arg rate)"/>
+
+    <node name="joint_state_publisher4" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="robot_state_publisher4" pkg="robot_state_publisher" type="state_publisher" />
+  </group>
+
+  <group ns="/dvrk_psm3">
+    <arg name="model" default="$(find dvrk_model)/model/psm_three.urdf.xacro" />
+    <arg name="gui" default="true" />
+    <arg name="rate" default="1"/>
+
+    <param name="robot_description" command="rosrun xacro xacro.py $(arg model)"/>
+    <param name="use_gui" value="$(arg gui)"/>
+    <param name="rate" value="$(arg rate)"/>
+
+    <node name="joint_state_publisher5" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="robot_state_publisher5" pkg="robot_state_publisher" type="state_publisher" />
+  </group>
+
+  <group ns="/dvrk_psm4">
+    <arg name="model" default="$(find dvrk_model)/model/psm_four.urdf.xacro" />
+    <arg name="gui" default="true" />
+    <arg name="rate" default="1"/>
+
+    <param name="robot_description" command="rosrun xacro xacro.py $(arg model)"/>
+    <param name="use_gui" value="$(arg gui)"/>
+    <param name="rate" value="$(arg rate)"/>
+
+    <node name="joint_state_publisher6" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="robot_state_publisher6" pkg="robot_state_publisher" type="state_publisher" />
+  </group>
+
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dvrk_model)/rviz_config.rviz" />
+</launch>
+
+
